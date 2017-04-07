@@ -2,27 +2,32 @@ module Stats
   class View
     # options: display_symbol, max_size
 
-    attr_accessor :counts, :finish, :symbol
-    def initialize(counts, options = {})
-      @counts = counts
+    attr_accessor :data, :finish, :symbol, :display_data
+    def initialize(data, options = {})
+      @data = data.to_h
       @finish = options.fetch(:finish, nil)
       @symbol = options.fetch(:symbol, '+')
     end
 
     def display(size = nil)
-      self.counts = counts.first(size.to_i).to_h unless size.nil?
-      counts.each do |key, value|
-        progress = symbol * value
-        stats_row = "#{formatted_name(key)}: #{progress} "
-        stats_row += finish.nil? ? "(#{value})" : "(#{value}/#{finish})"
-        puts stats_row
+      self.display_data = size.nil? ? data : data.first(size.to_i).to_h
+      display_data.each do |key, count|
+        puts row(key, count)
       end
     end
 
     private
 
+    def row(key, count)
+      progress = symbol * count
+      stats_row = "#{formatted_name(key)}: #{progress}"
+      stats_row += ' ' unless count.to_i.zero?
+      stats_row += finish.nil? ? "(#{count})" : "(#{count}/#{finish})"
+      stats_row
+    end
+
     def formatted_name(name)
-      width = counts.keys.map(&:size).max + 1
+      width = display_data.keys.map(&:size).max + 1
       [name, ' ' * (width - name.size)].join
     end
   end

@@ -6,9 +6,9 @@ require './progress/counter'
 require './progress/view'
 require './stats/view'
 
-parser = Parser.new('input.csv.sample')
+parser = Parser.new('input.csv')
 puts '----------------------------------'
-puts '15 most popular tags:'
+puts '15 most popular tags (initial):'
 puts '----------------------------------'
 
 Tags::View.new(parser).display(15)

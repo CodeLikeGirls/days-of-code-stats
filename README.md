@@ -7,6 +7,6 @@ TODO:
 - take file path as argument
 
 run with sample file:
-```ruby
+```bash
 ruby stats.rb
 ```

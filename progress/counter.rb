@@ -1,5 +1,7 @@
 module Progress
   class Counter
+    INVALID = %w(? -)
+
     attr_accessor :data
     def initialize(data)
       @data = data
@@ -17,7 +19,7 @@ module Progress
 
     def valid_day?(d)
       d = d.to_s.strip
-      !d.empty? && d != '?'
+      !d.empty? && !INVALID.include?(d)
     end
   end
 end
