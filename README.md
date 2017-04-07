@@ -1,12 +1,17 @@
 Stats parser for it-learning challenge
 
 TODO:
+- make it possible to view all tags
 - stats for all days tags
 - beautiful headers
-- no space if there is zero progress
 - take file path as argument
 
 run with sample file:
 ```bash
-ruby stats.rb
+# 15 most popular tags planned to learn
+bundle exec rake tags:initial_popular
+# 200 most popular tags planned to learn
+bundle exec rake tags:initial_popular COUNT=100
+# users' progress
+bundle exec rake progress
 ```

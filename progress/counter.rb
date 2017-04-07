@@ -1,6 +1,6 @@
 module Progress
   class Counter
-    INVALID = %w(? -)
+    INVALID = ['?', '-'].freeze
 
     attr_accessor :data
     def initialize(data)
