@@ -1,13 +1,8 @@
 Stats parser for it-learning challenge
 
 TODO:
-- View класс - убрать, потом переписать мб
-- Parser tags
-- add number to stats
-
-- delete invalid tags from all, 
+? add number to stats
 - make it possible to view all tags
-- stats for all days tags
 - beautiful headers
 - take file path as argument
 
@@ -19,4 +14,9 @@ bundle exec rake tags:initial_popular
 bundle exec rake tags:initial_popular COUNT=100
 # users' progress
 bundle exec rake progress
+```
+
+So-called test:
+```bash
+test/tasks_test.sh
 ```
