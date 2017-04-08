@@ -1,4 +1,4 @@
-require './parser'
+require './parser/parser'
 require './tags/counter'
 require './progress/counter'
 require './progress/view'
@@ -25,7 +25,6 @@ namespace :tags do
     puts "#{cnt} most popular tags:"
     puts '----------------------------------'
     parser = Parser.new('input.csv')
-
     counts = Tags::Counter.new(parser.tags).sorted_counts
     Stats::View.new(counts, symbol: '==').display(cnt)
   end
