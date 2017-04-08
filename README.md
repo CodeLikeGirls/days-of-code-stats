@@ -1,7 +1,7 @@
 Stats parser for it-learning challenge
 
-TODO:
-? add number to stats
+TODO:  
+- add number to stats (maybe)
 - make it possible to view all tags
 - beautiful headers
 - take file path as argument
