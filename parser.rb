@@ -6,8 +6,14 @@ class Parser
     @file = file
   end
 
-  def tags
+  def initial_tags
     csv.flat_map { |row| row[2].gsub(/[\[\]]/, '').split(',').map(&:strip) }
+  end
+
+  def tags
+    # spaghetti
+    arr = csv.flat_map { |row| row[3..33] }.select { |a| !a.nil? }
+    arr.flat_map { |a| a.to_s.split(',').map(&:strip).select { |s| !['+', '?', '-', ''].include?(s) } }
   end
 
   def users_progress

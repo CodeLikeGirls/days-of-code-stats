@@ -1,6 +1,11 @@
 Stats parser for it-learning challenge
 
 TODO:
+- View класс - убрать, потом переписать мб
+- Parser tags
+- add number to stats
+
+- delete invalid tags from all, 
 - make it possible to view all tags
 - stats for all days tags
 - beautiful headers

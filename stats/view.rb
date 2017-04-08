@@ -28,7 +28,7 @@ module Stats
 
     def formatted_name(name)
       width = display_data.keys.map(&:size).max + 1
-      [name, ' ' * (width - name.size)].join
+      ['♥ ', name, ' ' * (width - name.size)].join
     end
   end
 end
