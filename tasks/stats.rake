@@ -1,6 +1,5 @@
-require './parser'
+require './parser/parser'
 require './tags/counter'
-require './tags/view'
 require './progress/counter'
 require './progress/view'
 require './stats/view'
@@ -13,11 +12,21 @@ namespace :tags do
     puts '----------------------------------'
     puts "#{cnt} most popular tags (initial):"
     puts '----------------------------------'
-    Tags::View.new(parser).display(cnt.to_i)
+
+    counts = Tags::Counter.new(parser.initial_tags).sorted_counts
+    Stats::View.new(counts, symbol: '===').display(cnt)
+
+    # Tags::View.new(parser).display(cnt.to_i)
   end
 
   task :popular do
-    # TODO
+    cnt = ENV.fetch('COUNT', 15)
+    puts '----------------------------------'
+    puts "#{cnt} most popular tags:"
+    puts '----------------------------------'
+    parser = Parser.new('input.csv')
+    counts = Tags::Counter.new(parser.tags).sorted_counts
+    Stats::View.new(counts, symbol: '==').display(cnt)
   end
 end
 
