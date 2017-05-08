@@ -26,7 +26,7 @@ class Parser
   private
 
   def names
-    csv.flat_map { |row| row[1] }
+    csv.flat_map { |row| row[1] }.select { |n| !n.to_s.empty? }
   end
 
   def initial_tags_columns
@@ -34,7 +34,7 @@ class Parser
   end
 
   def tags_columns
-    csv.map { |row| row[3..33] }
+    csv.map { |row| row[3..45] }
   end
 
   def csv

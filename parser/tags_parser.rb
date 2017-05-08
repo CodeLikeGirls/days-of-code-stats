@@ -2,7 +2,7 @@ class Parser
   class TagParser
     attr_accessor :tags_list
     def initialize(tags_list)
-      @tags_list = tags_list.to_s
+      @tags_list = tags_list.to_str
     end
 
     def to_a

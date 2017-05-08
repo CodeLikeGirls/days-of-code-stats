@@ -9,7 +9,7 @@ module Tags
       counts.sort_by { |_key, value| -value }
     end
 
-    private
+    # private
 
     def counts
       tags.each_with_object({}) do |tag, hash|
