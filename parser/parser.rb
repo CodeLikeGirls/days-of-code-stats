@@ -12,7 +12,7 @@ class Parser
   end
 
   def tags
-    tags_columns.flatten.flat_map { |tags| TagParser.new(tags).to_a }
+    tags_columns.flatten.compact.flat_map { |tags| TagParser.new(tags).to_a }
   end
 
   def users_progress
@@ -26,11 +26,11 @@ class Parser
   private
 
   def names
-    csv.flat_map { |row| row[1] }.select { |n| !n.to_s.empty? }
+    csv.flat_map { |row| row[1] }.compact
   end
 
   def initial_tags_columns
-    csv.flat_map { |row| row[2] }
+    csv.flat_map { |row| row[2] }.compact
   end
 
   def tags_columns

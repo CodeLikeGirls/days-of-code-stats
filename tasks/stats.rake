@@ -20,11 +20,16 @@ def p_title(title)
   p_delimiter
 end
 
+def parser
+  filename = ENV.fetch('FILE', 'input.csv')
+  Parser.new(filename)
+end
+
 namespace :tags do
   # most popular tags planned to be learned
   task :initial_popular do
     cnt = ENV.fetch('COUNT', 15)
-    parser = Parser.new('input.csv')
+    # parser = Parser.new('input.csv')
     p_title("#{cnt} most popular tags (initial):")
     counts = Tags::Counter.new(parser.initial_tags).sorted_counts
     Stats::View.new(counts, symbol: '===').display(cnt)
@@ -34,7 +39,7 @@ namespace :tags do
   task :popular do
     cnt = ENV.fetch('COUNT', 15)
     p_title("#{cnt} most popular tags:")
-    parser = Parser.new('input.csv')
+    # parser = Parser.new('input.csv')
     counts = Tags::Counter.new(parser.tags).sorted_counts
     Stats::View.new(counts, symbol: '=').display(cnt)
   end
@@ -42,7 +47,7 @@ namespace :tags do
   # individual progress for each user
   # TODO: refactor
   task :for_users do
-    parser = Parser.new('input.csv')
+    # parser = Parser.new('input.csv')
     progress = parser.users_progress
     counts = Progress::Counter.new(progress).counts
     progress.each do |name, tags|
@@ -60,7 +65,7 @@ namespace :tags do
 end
 
 task :progress do
-  parser = Parser.new('input.csv')
+  # parser = Parser.new('input.csv')
   p_title('Users progress:')
   Progress::View.new(parser).display
 end

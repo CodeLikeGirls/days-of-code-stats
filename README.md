@@ -4,8 +4,6 @@ TODO:
 - refactor #for_users - make (nil-)signs more usable
 - add number to stats (maybe)
 - make it possible to view all tags
-- beautiful headers
-- take file path as argument
 
 run with sample file:
 ```bash
@@ -19,6 +17,8 @@ bundle exec rake tags:popular
 bundle exec rake tags:for_users
 # users' progress
 bundle exec rake progress
+# use other file with another FILE (default is input.csv):
+bundle exec rake progress FILE=input-all.csv
 ```
 
 So-called test:
