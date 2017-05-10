@@ -12,8 +12,10 @@ module Stats
     def display(size = nil)
       self.display_data = size.nil? ? data : data.first(size.to_i).to_h
       self.display_data = self.display_data.select { |d| !d.to_s.empty? }
+      i = 1
       display_data.each do |key, count|
-        puts row(key, count)
+        puts row("#{i}. #{key}", count)
+        i += 1
       end
     end
 
@@ -28,8 +30,9 @@ module Stats
     end
 
     def formatted_name(name)
-      width = display_data.keys.map(&:size).max + 1
-      [name, ' ' * (width - name.size)].join
+      width = display_data.keys.map(&:size).max + 4
+      blanks_cnt = (width - name.size)
+      [name, ' ' * blanks_cnt].join
     end
   end
 end
