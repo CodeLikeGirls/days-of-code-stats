@@ -1,11 +1,18 @@
 Stats parser for it-learning challenge
 
 TODO:  
+- configuring
 - refactor #for_users - make (nil-)signs more usable
 - add number to stats (maybe)
 - make it possible to view all tags
 
-run with sample file:
+Generate text for the days' posts:
+```bash
+ruby days.rb
+```
+
+
+Run with sample file:
 ```bash
 # 15 most popular tags planned to learn
 bundle exec rake tags:initial_popular
