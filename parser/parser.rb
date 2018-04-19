@@ -26,15 +26,15 @@ class Parser
   private
 
   def names
-    csv.flat_map { |row| row[1] }.compact
+    csv.flat_map { |row| row[0] }.compact
   end
 
   def initial_tags_columns
-    csv.flat_map { |row| row[2] }.compact
+    csv.flat_map { |row| row[1] }.compact
   end
 
   def tags_columns
-    csv.map { |row| row[3..45] }
+    csv.map { |row| row[2..45] }
   end
 
   def csv
