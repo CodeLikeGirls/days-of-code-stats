@@ -1,17 +1,13 @@
 require 'date'
 require './config/config'
 
-logo = '🌱💻'
-tag = '#spring2018@days_of_code'
 week_days = %w[пн вт ср чт пт сб вс]
-length = 21
+config = DaysOfCode::Config.new
 
-start = Date.parse('9.04.2018')
-1.upto(length) do |i|
-  day = (start + i - 1).strftime('%e.%m')
-  text = "#{logo} День #{i} (#{day}, #{week_days[(i-1)%7]})\n\n#{tag}"
-  puts text
-  puts "-------------------"
+config.dates.each_with_index do |date, i|
+   text = "#{config.emoji} День #{i+1} (#{date.strftime('%e.%m')}, #{week_days[date.wday-1]})\n\n#{config.vk_tag}"
+   puts text
+   puts "-------------------"
 end
 
 
