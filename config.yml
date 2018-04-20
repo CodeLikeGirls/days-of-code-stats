@@ -1,0 +1,9 @@
+challenge:
+  start_date: '9.04.2018'
+  end_date: '29.04.2018'
+  vk_tag: '#spring2018@days_of_code'
+  emoji: '🌱💻'
+  name_column: 0
+  initial_tags_column: 1
+  days_columns_from: 2
+  days_columns_to: 45

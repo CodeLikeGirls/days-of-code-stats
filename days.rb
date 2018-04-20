@@ -1,4 +1,5 @@
 require 'date'
+require './config/config'
 
 logo = '🌱💻'
 tag = '#spring2018@days_of_code'
