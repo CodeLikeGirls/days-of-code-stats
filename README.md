@@ -1,10 +1,11 @@
-Stats parser for it-learning challenge
+Good enough stats parser for the it self-learning challenge:
 
-Generate text for the days' posts:
+Configuration: edit `config.yml`
+
+Generate texts for the days' posts:
 ```bash
 ruby days.rb
 ```
-
 
 Run with the sample file (input.csv):
 ```bash
@@ -22,7 +23,8 @@ bundle exec rake progress
 bundle exec rake progress FILE=input-all.csv
 ```
 
-So-called test:
+Run tests:
 ```bash
-test/tasks_test.sh
+test/tasks_test.sh # to run this test first create input.csv (e.g. from input.sample.csv)
+ruby parser_test.rb
 ```
