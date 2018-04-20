@@ -2,46 +2,48 @@ require 'csv'
 require './parser/tags_parser'
 require './config/config'
 
-class Parser
-  def initialize(file, config = DaysOfCode::Config.new)
-    @file = file
-    @config = config
-  end
-
-  def initial_tags
-    initial_tags_column.flat_map { |tags| TagParser.new(tags).to_a }
-  end
-
-  def tags
-    tags_columns.flatten.compact.flat_map { |tags| TagParser.new(tags).to_a }
-  end
-
-  def users_progress
-    progress = {}
-    names.each_with_index do |name, i|
-      progress[name] = tags_columns[i]
+module DaysOfCode
+  class Parser
+    def initialize(file, config = DaysOfCode::Config.new)
+      @file = file
+      @config = config
     end
-    progress
-  end
 
-  private
+    def initial_tags
+      initial_tags_column.flat_map { |tags| TagParser.new(tags).to_a }
+    end
 
-  attr_reader :file, :config
+    def tags
+      tags_columns.flatten.compact.flat_map { |tags| TagParser.new(tags).to_a }
+    end
 
-  def names
-    csv.flat_map { |row| row[config.name_column] }.compact
-  end
+    def users_progress
+      progress = {}
+      names.each_with_index do |name, i|
+        progress[name] = tags_columns[i]
+      end
+      progress
+    end
 
-  def initial_tags_column
-    csv.flat_map { |row| row[config.initial_tags_column] }.compact
-  end
+    private
 
-  def tags_columns
-    csv.map { |row| row[config.days_columns] }
-  end
+    attr_reader :file, :config
 
-  def csv
-    @csv ||= CSV.table(file)
-    @csv
+    def names
+      csv.flat_map { |row| row[config.name_column] }.compact
+    end
+
+    def initial_tags_column
+      csv.flat_map { |row| row[config.initial_tags_column] }.compact
+    end
+
+    def tags_columns
+      csv.map { |row| row[config.days_columns] }
+    end
+
+    def csv
+      @csv ||= CSV.table(file)
+      @csv
+    end
   end
 end
