@@ -34,6 +34,7 @@ module DaysOfCode
     end
 
     def initial_tags_column
+      return [] unless config.initial_tags_column
       csv.flat_map { |row| row[config.initial_tags_column] }.compact
     end
 

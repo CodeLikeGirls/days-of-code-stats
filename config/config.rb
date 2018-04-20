@@ -10,10 +10,14 @@ module DaysOfCode
       Date.parse(config.fetch('start_date'))..Date.parse(config.fetch('end_date'))
     end
 
-    %w[name_column initial_tags_column emoji vk_tag].each do |name|
+    %w[name_column emoji vk_tag].each do |name|
       define_method name do
         config.fetch(name)
       end
+    end
+
+    def initial_tags_column
+      config['initial_tags_column']
     end
 
     def days_columns
