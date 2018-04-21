@@ -13,9 +13,11 @@ module DaysOfCode
       def display(size = nil)
         self.display_data = size.nil? ? data : data.first(size.to_i).to_h
         self.display_data = self.display_data.select { |d| !d.to_s.empty? }
+        lines = []
         display_data.each do |key, count|
-          puts row(key, count)
+          lines.push row(key, count)
         end
+        lines
       end
 
       private
